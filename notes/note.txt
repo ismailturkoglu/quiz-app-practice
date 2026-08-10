@@ -1,0 +1,1 @@
+repo: https://github.com/ismailturkoglu/quiz-app-practice.git
