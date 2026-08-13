@@ -11,5 +11,6 @@ function showQuestion() {
   } else {
     console.log("Quiz is over.");
     console.log(quiz);
+    getQuestionBtn.disabled = true;
   }
 }
