@@ -1,4 +1,3 @@
-// The Question constructor is used to create the objects.
 const question_1 = new Question(
   "JavaScript hangi tür bir dildir?",
   {
@@ -43,10 +42,8 @@ const question_4 = new Question(
   "C",
 );
 
-// The created Question objects are collected into an array.
 const questionList_1 = [question_1, question_2, question_3, question_4];
 
-// The Question constructor is used to create objects directly inside the array.
 const questionList_2 = [
   new Question(
     "JavaScript'te ekrana konsola çıktı vermek için hangi yöntem kullanılır?",
@@ -93,7 +90,6 @@ const questionList_2 = [
   ),
 ];
 
-// The Question constructor is used to create objects directly inside the array.
 const questionList_3 = [
   new Question(
     "JavaScript'te bir koşul belirtmek için hangisi kullanılır?",
@@ -140,8 +136,6 @@ const questionList_3 = [
   ),
 ];
 
-// Objects are created directly using object literals without a constructor.
-// The method is defined separately inside each object.
 const questionList_4 = [
   {
     questionText:
