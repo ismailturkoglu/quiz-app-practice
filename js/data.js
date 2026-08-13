@@ -1,3 +1,4 @@
+// The Question constructor is used to create the objects.
 const question_1 = new Question(
   "JavaScript hangi tür bir dildir?",
   {
@@ -42,101 +43,105 @@ const question_4 = new Question(
   "C",
 );
 
+// The created Question objects are collected into an array.
 const questionList_1 = [question_1, question_2, question_3, question_4];
 
+// The Question constructor is used to create objects directly inside the array.
 const questionList_2 = [
-  {
-    questionText:
-      "JavaScript'te ekrana konsola çıktı vermek için hangi yöntem kullanılır?",
-    options: {
+  new Question(
+    "JavaScript'te ekrana konsola çıktı vermek için hangi yöntem kullanılır?",
+    {
       A: "print()",
       B: "console.log()",
       C: "echo()",
       D: "write()",
     },
-    rightAnswer: "B",
-  },
-  {
-    questionText:
-      "JavaScript'te bir dizinin uzunluğunu öğrenmek için hangi özellik kullanılır?",
-    options: {
+    "B",
+  ),
+
+  new Question(
+    "JavaScript'te bir dizinin uzunluğunu öğrenmek için hangi özellik kullanılır?",
+    {
       A: "size",
       B: "length",
       C: "count",
       D: "index",
     },
-    rightAnswer: "B",
-  },
-  {
-    questionText:
-      "JavaScript'te bir HTML elementini ID'sine göre seçmek için hangi yöntem kullanılır?",
-    options: {
+    "B",
+  ),
+
+  new Question(
+    "JavaScript'te bir HTML elementini ID'sine göre seçmek için hangi yöntem kullanılır?",
+    {
       A: "document.querySelector()",
       B: "document.getElementById()",
       C: "document.getElement()",
       D: "document.selectById()",
     },
-    rightAnswer: "B",
-  },
-  {
-    questionText:
-      "JavaScript'te bir fonksiyon tanımlamak için hangi anahtar kelime kullanılır?",
-    options: {
+    "B",
+  ),
+
+  new Question(
+    "JavaScript'te bir fonksiyon tanımlamak için hangi anahtar kelime kullanılır?",
+    {
       A: "function",
       B: "method",
       C: "define",
       D: "func",
     },
-    rightAnswer: "A",
-  },
+    "A",
+  ),
 ];
 
+// The Question constructor is used to create objects directly inside the array.
 const questionList_3 = [
-  {
-    questionText: "JavaScript'te bir koşul belirtmek için hangisi kullanılır?",
-    options: {
+  new Question(
+    "JavaScript'te bir koşul belirtmek için hangisi kullanılır?",
+    {
       A: "if",
       B: "for",
       C: "while",
       D: "switch",
     },
-    rightAnswer: "A",
-  },
-  {
-    questionText:
-      "JavaScript'te bir dizinin ilk elemanına hangi index ile ulaşılır?",
-    options: {
+    "A",
+  ),
+
+  new Question(
+    "JavaScript'te bir dizinin ilk elemanına hangi index ile ulaşılır?",
+    {
       A: "1",
       B: "0",
       C: "-1",
       D: "first",
     },
-    rightAnswer: "B",
-  },
-  {
-    questionText:
-      "JavaScript'te bir değerin veri tipini öğrenmek için hangi operatör kullanılır?",
-    options: {
+    "B",
+  ),
+
+  new Question(
+    "JavaScript'te bir değerin veri tipini öğrenmek için hangi operatör kullanılır?",
+    {
       A: "typeof",
       B: "datatype",
       C: "type",
       D: "getType",
     },
-    rightAnswer: "A",
-  },
-  {
-    questionText:
-      "JavaScript'te bir butona tıklama olayını yakalamak için hangisi kullanılabilir?",
-    options: {
+    "A",
+  ),
+
+  new Question(
+    "JavaScript'te bir butona tıklama olayını yakalamak için hangisi kullanılabilir?",
+    {
       A: "addEventListener()",
       B: "addClick()",
       C: "clickEvent()",
       D: "onButton()",
     },
-    rightAnswer: "A",
-  },
+    "A",
+  ),
 ];
 
+// Objects are created directly using object literals without a constructor.
+// The method is defined separately inside each object.
 const questionList_4 = [
   {
     questionText:
@@ -148,6 +153,9 @@ const questionList_4 = [
       D: "!=",
     },
     rightAnswer: "B",
+    checkAnswer: function (userAnswer) {
+      return userAnswer === this.rightAnswer;
+    },
   },
   {
     questionText:
@@ -159,6 +167,9 @@ const questionList_4 = [
       D: "iterate",
     },
     rightAnswer: "C",
+    checkAnswer: function (userAnswer) {
+      return userAnswer === this.rightAnswer;
+    },
   },
   {
     questionText:
@@ -170,5 +181,29 @@ const questionList_4 = [
       D: "characters",
     },
     rightAnswer: "C",
+    checkAnswer: function (userAnswer) {
+      return userAnswer === this.rightAnswer;
+    },
   },
+  {
+    questionText:
+      "JavaScript'te bir değişken tanımlamak için hangisi kullanılabilir?",
+    options: {
+      A: "var",
+      B: "define",
+      C: "variable",
+      D: "letvar",
+    },
+    rightAnswer: "A",
+    checkAnswer: function (userAnswer) {
+      return userAnswer === this.rightAnswer;
+    },
+  },
+];
+
+const questionLists = [
+  questionList_1,
+  questionList_2,
+  questionList_3,
+  questionList_4,
 ];
