@@ -50,7 +50,7 @@ function showQuestion() {
 
     // div
     const questionDiv = document.querySelector(".question-text");
-    questionDiv.textContent = question.questionText;
+    questionDiv.textContent = `${quiz.questionIndex + 1})  ${question.questionText}`;
 
     // ul
     const optionsUl = document.querySelector(".question-options ul");
