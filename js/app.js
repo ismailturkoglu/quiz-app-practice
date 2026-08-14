@@ -11,7 +11,7 @@ function handleQuestion() {
   checkQuestionBtnState();
 }
 function isQuizOver() {
-  return quiz.questionIndex === quiz.questionList.length;
+  return quiz.questionIndex >= quiz.questionList.length;
 }
 function logQuestion() {
   if (!isQuizOver()) {
