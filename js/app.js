@@ -2,12 +2,28 @@ const randomIndex = Math.floor(Math.random() * questionLists.length);
 const selectedQuestionList = questionLists[randomIndex];
 const getQuestionBtn = document.getElementById("get-question");
 const quiz = new Quiz(selectedQuestionList);
-handleQuestion();
+// startQuizStaticly();
+startQuizDynamically();
 
-getQuestionBtn.addEventListener("click", handleQuestion);
-
-function handleQuestion() {
-  wayOne();
+function startQuizDynamically() {
+  handleQuestionDynamically();
+  getQuestionBtn.addEventListener("click", handleQuestionDynamically);
+}
+function startQuizStatically() {
+  handleQuestionStatically();
+  getQuestionBtn.addEventListener("click", handleQuestionStatically);
+}
+function handleQuestionStatically() {
+  logQuestion();
+  displayQuestion();
+  nextQuestion();
+  checkQuestionBtnState();
+}
+function handleQuestionDynamically() {
+  logQuestion();
+  createQuestion();
+  nextQuestion();
+  checkQuestionBtnState();
 }
 function isQuizOver() {
   return quiz.questionIndex >= quiz.questionList.length;
@@ -28,7 +44,7 @@ function checkQuestionBtnState() {
     getQuestionBtn.disabled = true;
   }
 }
-function showQuestion() {
+function displayQuestion() {
   if (!isQuizOver()) {
     /* <!-- HTML Structure -->
     <div class="body">
@@ -61,9 +77,8 @@ function showQuestion() {
     optionsUl.children[3].textContent = `${optionsKeys[3]}) ${optionsValues[3]}`;
   }
 }
-function wayOne() {
-  logQuestion();
-  showQuestion();
-  nextQuestion();
-  checkQuestionBtnState();
+function createQuestion() {
+  // .
+  // .
+  // .
 }
