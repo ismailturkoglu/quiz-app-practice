@@ -4,7 +4,9 @@ function Quiz(questionList) {
 }
 
 Quiz.prototype.getQuestion = function () {
-  const question = this.questionList[this.questionIndex];
+  return this.questionList[this.questionIndex];
+};
+
+Quiz.prototype.nextQuestion = function () {
   this.questionIndex++;
-  return question;
 };
