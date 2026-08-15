@@ -2,7 +2,8 @@ const randomIndex = Math.floor(Math.random() * questionLists.length);
 const selectedQuestionList = questionLists[randomIndex];
 const getQuestionBtn = document.getElementById("get-question");
 const quiz = new Quiz(selectedQuestionList);
-// startQuizStaticly();
+
+// startQuizStatically();
 startQuizDynamically();
 
 function startQuizDynamically() {
@@ -46,7 +47,7 @@ function checkQuestionBtnState() {
 }
 function displayQuestion() {
   if (!isQuizOver()) {
-    /* <!-- HTML Structure -->
+    /* <!-- This HTML Structure has to be in the index.html -->
     <div class="body">
       <div class="question-text"></div>
       <div class="question-options">
@@ -58,7 +59,6 @@ function displayQuestion() {
         </ul>
       </div>
     </div> */
-
     const question = quiz.getQuestion();
     const options = question.options;
     const optionsKeys = Object.keys(options);
@@ -78,7 +78,53 @@ function displayQuestion() {
   }
 }
 function createQuestion() {
-  // .
-  // .
-  // .
+  /* 
+<!-- This HTML Structure will be createted -->
+<div class="body">
+  <div class="question-text"></div>
+  <div class="question-options">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+</div> 
+*/
+  const question = quiz.getQuestion();
+  const optionsList = Object.entries(question.options);
+  console.log(optionsList);
+
+  const questionBodyDiv = document.querySelector(".question-body");
+  questionBodyDiv.innerHTML = "";
+
+  // div.body
+  const bodyDiv = document.createElement("div");
+  bodyDiv.classList.add("body");
+
+  // div.question-text
+  const questionTextDiv = document.createElement("div");
+  questionTextDiv.textContent = `${quiz.questionIndex + 1}) ${question.questionText}`;
+  questionTextDiv.classList.add("question-text");
+
+  // div.question-options
+  const questionOptionsDiv = document.createElement("div");
+  questionOptionsDiv.classList.add("question-options");
+
+  // ul
+  const ul = document.createElement("ul");
+
+  // li
+  for (let option of optionsList) {
+    const li = document.createElement("li");
+    // li'nin içeriği
+    li.textContent = `${option[0]}) ${option[1]}`;
+    ul.appendChild(li);
+  }
+
+  questionOptionsDiv.appendChild(ul);
+  bodyDiv.appendChild(questionTextDiv);
+  bodyDiv.appendChild(questionOptionsDiv);
+  questionBodyDiv.appendChild(bodyDiv);
 }
