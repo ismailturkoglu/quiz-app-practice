@@ -1,8 +1,12 @@
 function UI() {
   this.questionBodyDiv = document.querySelector(".question-body");
   this.getQuestionBtn = document.getElementById("get-question-btn");
+
+  /* 
+  // Required for startQuizStatically() in app.js
   this.questionDiv = document.querySelector(".question-text");
-  this.optionsUl = document.querySelector(".question-options ul");
+  this.optionsUl = document.querySelector(".question-options ul"); 
+  */
 }
 
 UI.prototype.createQuestion = function (question, questionIndex) {
