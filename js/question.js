@@ -1,9 +1,9 @@
-function Question(questionText, options, rightAnswer) {
+function Question(questionText, options, result) {
   this.questionText = questionText;
   this.options = options;
-  this.rightAnswer = rightAnswer;
+  this.result = result;
 }
 
 Question.prototype.checkAnswer = function (userAnswer) {
-  return userAnswer === this.rightAnswer;
+  return userAnswer === this.result;
 };

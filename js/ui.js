@@ -48,8 +48,12 @@ UI.prototype.createQuestion = function (question, questionIndex) {
   // li
   for (let option of optionsList) {
     const li = document.createElement("li");
-    // li'nin içeriği
-    li.textContent = `${option[0]}) ${option[1]}`;
+
+    const span = document.createElement("span");
+    // span içeriği
+    span.textContent = `${option[0]}) ${option[1]}`;
+
+    li.appendChild(span);
     ul.appendChild(li);
   }
 

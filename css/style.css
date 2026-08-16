@@ -1,3 +1,8 @@
+:root {
+  --quiz-success: #77d598;
+  --quiz-wrong: #f8d7da;
+}
+
 .quiz-app-container {
   width: 33rem;
   position: absolute;
@@ -23,4 +28,17 @@
   border: 1px solid #222;
   border-radius: 0.3rem;
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.question-options li.disabled {
+  pointer-events: none;
+}
+
+.question-options li.correct {
+  background-color: var(--quiz-success);
+}
+.question-options li.incorrect {
+  background-color: var(--quiz-wrong);
 }
