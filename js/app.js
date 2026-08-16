@@ -67,6 +67,9 @@ function addAnswerListeners() {
         questionOptionsUl.children[i].classList.add("disabled");
       }
       nextQuestion();
+      if (isQuizOver()) {
+        disableQuestionBtn();
+      }
     });
   }
 }
