@@ -1,8 +1,10 @@
 :root {
   --quiz-success: #77d598;
   --quiz-wrong: #f8d7da;
+  --quiz-option-hover: #e9ecef;
 }
 
+/* .quiz-app-container */
 .quiz-app-container {
   width: 33rem;
   position: absolute;
@@ -11,16 +13,15 @@
   transform: translate(-50%, -50%);
 }
 
+/* question */
 .question-text {
   font-weight: 500;
   padding: 0.5rem 0;
   font-size: 1.2rem;
 }
-
 .question-options ul {
   padding: 0;
 }
-
 .question-options li {
   list-style: none;
   margin: 0.7rem 0;
@@ -31,11 +32,12 @@
   display: flex;
   justify-content: space-between;
 }
-
+.question-options li:hover {
+  background-color: var(--quiz-option-hover);
+}
 .question-options li.disabled {
   pointer-events: none;
 }
-
 .question-options li.correct {
   background-color: var(--quiz-success);
 }
