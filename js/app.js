@@ -18,9 +18,9 @@ function handleQuestionStatically() {
   if (!isQuizOver()) {
     ui.displayQuestion(quiz.getQuestion(), quiz.questionIndex);
     logQuestion();
-    addAnswerListeners();
+    ui.addAnswerListeners();
   } else {
-    disableQuestionBtn();
+    ui.disableQuestionBtn();
     console.log("Quiz is over.");
     console.log(quiz);
   }
@@ -29,49 +29,31 @@ function handleQuestionDynamically() {
   if (!isQuizOver()) {
     ui.createQuestion(quiz.getQuestion(), quiz.questionIndex);
     logQuestion();
-    addAnswerListeners();
+    ui.addAnswerListeners();
   } else {
-    disableQuestionBtn();
+    ui.disableQuestionBtn();
     console.log("Quiz is over.");
     console.log(quiz);
   }
 }
-function addAnswerListeners() {
-  const questionOptionsUl = document.querySelector(".question-options ul");
+function createAnswerHandler() {
+  return function (event) {
+    const selectedOption = event.currentTarget;
 
-  for (let i = 0; i < questionOptionsUl.children.length; i++) {
-    questionOptionsUl.children[i].addEventListener("click", function (event) {
-      const selectedOption = event.currentTarget;
+    const userAnswer = selectedOption.textContent[0];
+    const question = quiz.getQuestion();
+    const isAnswerRight = question.checkAnswer(userAnswer);
 
-      const userAnswer = selectedOption.textContent[0];
-      const question = quiz.getQuestion();
-      const isAnswerRight = question.checkAnswer(userAnswer);
+    ui.showAnswerResult(selectedOption, isAnswerRight);
 
-      if (isAnswerRight) {
-        selectedOption.classList.add("correct");
+    ui.disableAnswerOptions();
 
-        const correctIcon = document.createElement("i");
-        correctIcon.className = "bi bi-check-circle";
+    nextQuestion();
 
-        selectedOption.insertAdjacentElement("beforeend", correctIcon);
-      } else {
-        selectedOption.classList.add("incorrect");
-
-        const incorrectIcon = document.createElement("i");
-        incorrectIcon.className = "bi bi-x-circle";
-
-        selectedOption.insertAdjacentElement("beforeend", incorrectIcon);
-      }
-
-      for (let i = 0; i < questionOptionsUl.children.length; i++) {
-        questionOptionsUl.children[i].classList.add("disabled");
-      }
-      nextQuestion();
-      if (isQuizOver()) {
-        disableQuestionBtn();
-      }
-    });
-  }
+    if (isQuizOver()) {
+      ui.disableQuestionBtn();
+    }
+  };
 }
 function isQuizOver() {
   return quiz.questionIndex >= quiz.questionList.length;
@@ -81,7 +63,4 @@ function logQuestion() {
 }
 function nextQuestion() {
   quiz.nextQuestion();
-}
-function disableQuestionBtn() {
-  ui.getQuestionBtn.disabled = true;
 }

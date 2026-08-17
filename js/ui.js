@@ -89,3 +89,42 @@ UI.prototype.displayQuestion = function (question, questionIndex) {
   this.optionsUl.children[2].textContent = `${optionsKeys[2]}) ${optionsValues[2]}`;
   this.optionsUl.children[3].textContent = `${optionsKeys[3]}) ${optionsValues[3]}`;
 };
+
+UI.prototype.addAnswerListeners = function () {
+  const questionOptionsUl = document.querySelector(".question-options ul");
+  const answerHandler = createAnswerHandler();
+
+  for (let i = 0; i < questionOptionsUl.children.length; i++) {
+    questionOptionsUl.children[i].addEventListener("click", answerHandler);
+  }
+};
+
+UI.prototype.disableAnswerOptions = function () {
+  const questionOptionsUl = document.querySelector(".question-options ul");
+
+  for (let i = 0; i < questionOptionsUl.children.length; i++) {
+    questionOptionsUl.children[i].classList.add("disabled");
+  }
+};
+
+UI.prototype.showAnswerResult = function (selectedOption, isAnswerRight) {
+  if (isAnswerRight) {
+    selectedOption.classList.add("correct");
+
+    const correctIcon = document.createElement("i");
+    correctIcon.className = "bi bi-check-circle";
+
+    selectedOption.insertAdjacentElement("beforeend", correctIcon);
+  } else {
+    selectedOption.classList.add("incorrect");
+
+    const incorrectIcon = document.createElement("i");
+    incorrectIcon.className = "bi bi-x-circle";
+
+    selectedOption.insertAdjacentElement("beforeend", incorrectIcon);
+  }
+};
+
+UI.prototype.disableQuestionBtn = function () {
+  this.getQuestionBtn.disabled = true;
+};
