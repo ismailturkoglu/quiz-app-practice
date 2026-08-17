@@ -44,6 +44,7 @@ UI.prototype.createQuestion = function (question, questionIndex) {
 
   // ul
   const ul = document.createElement("ul");
+  this.questionOptionsUl = ul;
 
   // li
   for (let option of optionsList) {
@@ -91,19 +92,16 @@ UI.prototype.displayQuestion = function (question, questionIndex) {
 };
 
 UI.prototype.addAnswerListeners = function () {
-  const questionOptionsUl = document.querySelector(".question-options ul");
   const answerHandler = createAnswerHandler();
 
-  for (let i = 0; i < questionOptionsUl.children.length; i++) {
-    questionOptionsUl.children[i].addEventListener("click", answerHandler);
+  for (let i = 0; i < this.questionOptionsUl.children.length; i++) {
+    this.questionOptionsUl.children[i].addEventListener("click", answerHandler);
   }
 };
 
 UI.prototype.disableAnswerOptions = function () {
-  const questionOptionsUl = document.querySelector(".question-options ul");
-
-  for (let i = 0; i < questionOptionsUl.children.length; i++) {
-    questionOptionsUl.children[i].classList.add("disabled");
+  for (let i = 0; i < this.questionOptionsUl.children.length; i++) {
+    this.questionOptionsUl.children[i].classList.add("disabled");
   }
 };
 
