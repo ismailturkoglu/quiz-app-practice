@@ -1,6 +1,7 @@
 function UI() {
   this.questionBodyDiv = document.querySelector(".question-body");
   this.getQuestionBtn = document.getElementById("get-question-btn");
+  this.questionProgressSpan = document.querySelector(".question-progress");
 
   /* 
   // Required for startQuizStatically() in app.js
@@ -123,6 +124,11 @@ UI.prototype.showAnswerResult = function (selectedOption, isAnswerRight) {
   }
 };
 
+// Edit property name
 UI.prototype.disableQuestionBtn = function () {
   this.getQuestionBtn.disabled = true;
+};
+
+UI.prototype.displayQuestionProgress = function (questionIndex, questionCount) {
+  this.questionProgressSpan.textContent = `${questionIndex + 1} / ${questionCount}`;
 };

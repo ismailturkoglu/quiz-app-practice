@@ -28,6 +28,7 @@ function handleQuestionStatically() {
 function handleQuestionDynamically() {
   if (!isQuizOver()) {
     ui.createQuestion(quiz.getQuestion(), quiz.questionIndex);
+    ui.displayQuestionProgress(quiz.questionIndex, quiz.questionList.length);
     logQuestion();
     ui.addAnswerListeners();
   } else {
