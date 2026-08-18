@@ -17,6 +17,7 @@ function startQuizStatically() {
 function handleQuestionStatically() {
   if (!isQuizOver()) {
     ui.displayQuestion(quiz.getQuestion(), quiz.questionIndex);
+    ui.displayQuestionProgress(quiz.questionIndex, quiz.questionList.length);
     logQuestion();
     ui.addAnswerListeners();
   } else {
