@@ -14,6 +14,12 @@
 }
 
 /* question */
+#question {
+  display: none;
+}
+#question.active {
+  display: block;
+}
 .question-text {
   font-weight: 500;
   padding: 0.5rem 0;
@@ -43,4 +49,31 @@
 }
 .question-options li.incorrect {
   background-color: var(--quiz-wrong);
+}
+
+/* score */
+#score {
+  visibility: visible;
+}
+#score.passive {
+  visibility: hidden;
+}
+.icon {
+  font-size: 6rem;
+}
+.score-text.passive {
+  display: none;
+}
+.score-text.active {
+  display: block;
+}
+.score-buttons .replay.passive,
+.score-buttons .quit.passive,
+.score-buttons .start.passive {
+  display: none;
+}
+.score-buttons .replay.active,
+.score-buttons .quit.active,
+.score-buttons .start.active {
+  display: inline-block;
 }

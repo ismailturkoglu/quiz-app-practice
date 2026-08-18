@@ -25,19 +25,18 @@
   </head>
   <body>
     <div class="container">
-      <h4 class="my-5 py-4 text-center text-bg-primary display-4">Quiz App</h4>
+      <h4 class="my-2 py-2 text-center text-bg-primary display-5">Quiz App</h4>
 
       <!-- .quiz-app-container -->
       <div class="quiz-app-container py-3">
         <!-- #question -->
-        <div id="question">
-          <div class="card my-5">
-            <div class="card-header question-header">
-              <h4>Quiz App</h4>
-            </div>
-            <div class="card-body question-body">
-              <!-- static part for startQuizStaticly() on app.js -->
-              <!-- <div class="body">
+        <div id="question" class="card my-2">
+          <div class="card-header question-header">
+            <h4>Quiz App</h4>
+          </div>
+          <div class="card-body question-body">
+            <!-- static part for startQuizStaticly() on app.js -->
+            <!-- <div class="body">
                 <div class="question-text"></div>
                 <div class="question-options">
                   <ul>
@@ -48,21 +47,43 @@
                   </ul>
                 </div>
               </div> -->
-            </div>
-            <div
-              class="card-footer d-flex justify-content-between align-items-center"
-            >
-              <span class="badge text-bg-info question-progress">
-                <!-- dynamic -->
-              </span>
-              <div>
-                <button class="btn btn-warning" id="get-question-btn">
-                  <i class="bi bi-arrow-right"></i>
-                </button>
-              </div>
+          </div>
+          <div
+            class="card-footer d-flex justify-content-between align-items-center"
+          >
+            <span class="badge text-bg-info question-progress">
+              <!-- dynamic -->
+            </span>
+            <div>
+              <button class="btn btn-warning" id="get-question-btn">
+                <i class="bi bi-arrow-right"></i>
+              </button>
             </div>
           </div>
         </div>
+        <!-- #score -->
+        <id id="score" class="card my-2">
+          <div class="card-body score-box text-center">
+            <div class="mb-3">
+              <!-- icon -->
+              <i class="bi bi-trophy icon text-primary"></i>
+            </div>
+            <div>
+              <div class="score-text mb-3 passive">
+                <p class="lead">
+                  <h5>
+                    <!-- dynamic -->
+                  </h5>
+                </p>
+              </div>
+              <div class="score-buttons mb-3">
+                <button class="btn btn-primary passive replay">Replay</button>
+                <button class="btn btn-primary start active">Start Quiz</button>
+                <button class="btn btn-primary passive quit">Quit</button>
+              </div>
+            </div>
+          </div>
+        </id>
       </div>
     </div>
     <!-- SCRIPTS -->

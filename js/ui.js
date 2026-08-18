@@ -2,6 +2,13 @@ function UI() {
   this.questionBodyDiv = document.querySelector(".question-body");
   this.getQuestionBtn = document.getElementById("get-question-btn");
   this.questionProgressSpan = document.querySelector(".question-progress");
+  this.replayBtn = document.querySelector(".score-buttons .replay");
+  this.startQuizBtn = document.querySelector(".score-buttons .start");
+  this.quitBtn = document.querySelector(".score-buttons .quit");
+  this.questionDiv = document.getElementById("question");
+  this.scoreDiv = document.getElementById("score");
+  this.scoreTextDiv = document.querySelector(".score-text");
+  this.scoreText = document.querySelector(".score-text h5");
 
   /* 
   // Required for startQuizStatically() in app.js
@@ -128,7 +135,60 @@ UI.prototype.showAnswerResult = function (selectedOption, isAnswerRight) {
 UI.prototype.disableQuestionBtn = function () {
   this.getQuestionBtn.disabled = true;
 };
+// Edit property name
+UI.prototype.enableQuestionBtn = function () {
+  this.getQuestionBtn.disabled = false;
+};
 
 UI.prototype.displayQuestionProgress = function (questionIndex, questionCount) {
   this.questionProgressSpan.textContent = `${questionIndex + 1} / ${questionCount}`;
+};
+
+UI.prototype.showScoreDiv = function () {
+  this.scoreDiv.classList.remove("passive");
+};
+UI.prototype.hideScoreDiv = function () {
+  ui.scoreDiv.classList.add("passive");
+};
+UI.prototype.showQuestionDiv = function () {
+  ui.questionDiv.classList.add("active");
+};
+UI.prototype.hideQuestionDiv = function () {
+  ui.questionDiv.classList.remove("active");
+};
+
+UI.prototype.showReplayBtn = function () {
+  this.replayBtn.classList.remove("passive");
+  this.replayBtn.classList.add("active");
+};
+UI.prototype.hideReplayBtn = function () {
+  ui.replayBtn.classList.add("passive");
+  ui.replayBtn.classList.remove("active");
+};
+UI.prototype.showQuitBtn = function () {
+  ui.quitBtn.classList.add("active");
+  ui.quitBtn.classList.remove("passive");
+};
+UI.prototype.hideQuitBtn = function () {
+  ui.quitBtn.classList.remove("active");
+  ui.quitBtn.classList.add("passive");
+};
+UI.prototype.showStartQuizBtn = function () {
+  ui.startQuizBtn.classList.add("active");
+  ui.startQuizBtn.classList.remove("passive");
+};
+UI.prototype.hideStartQuizBtn = function () {
+  ui.startQuizBtn.classList.remove("active");
+  ui.startQuizBtn.classList.add("passive");
+};
+UI.prototype.showScoreText = function () {
+  this.scoreTextDiv.classList.remove("passive");
+  this.scoreTextDiv.classList.add("active");
+};
+UI.prototype.hideScoreText = function () {
+  this.scoreTextDiv.classList.remove("active");
+  this.scoreTextDiv.classList.add("passive");
+};
+UI.prototype.addScoreText = function (correctAnswer, totalAnswer) {
+  this.scoreText.textContent = `Toplam ${totalAnswer} sorudan ${correctAnswer} doğru cevap verdiniz.`;
 };
