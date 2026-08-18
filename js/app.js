@@ -48,7 +48,7 @@ function createAnswerHandler() {
 
     ui.disableAnswerOptions();
 
-    nextQuestion();
+    quiz.nextQuestion();
 
     if (isQuizOver()) {
       ui.disableQuestionBtn();
@@ -60,7 +60,4 @@ function isQuizOver() {
 }
 function logQuestion() {
   console.log(quiz.getQuestion());
-}
-function nextQuestion() {
-  quiz.nextQuestion();
 }
