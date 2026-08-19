@@ -9,6 +9,8 @@ function UI() {
   this.scoreDiv = document.getElementById("score");
   this.scoreTextDiv = document.querySelector(".score-text");
   this.scoreText = document.querySelector(".score-text h5");
+  this.timeSecondSpan = document.querySelector(".time-second");
+  this.timeTextSpan = document.querySelector(".time-text");
 }
 
 UI.prototype.createQuestion = function (question, questionIndex) {
@@ -89,12 +91,7 @@ UI.prototype.showAnswerResult = function (selectedOption, isAnswerRight) {
     selectedOption.insertAdjacentElement("beforeend", incorrectIcon);
   }
 };
-UI.prototype.disableNextQuestionBtn = function () {
-  this.nextQuestionBtn.disabled = true;
-};
-UI.prototype.enableNextQuestionBtn = function () {
-  this.nextQuestionBtn.disabled = false;
-};
+
 UI.prototype.displayQuestionProgress = function (questionIndex, questionCount) {
   this.questionProgressSpan.textContent = `${questionIndex + 1} / ${questionCount}`;
 };
@@ -106,7 +103,6 @@ UI.prototype.disableAnswerOptions = function () {
 UI.prototype.addScoreText = function (correctAnswer, totalAnswer) {
   this.scoreText.textContent = `Toplam ${totalAnswer} sorudan ${correctAnswer} doğru cevap verdiniz.`;
 };
-
 UI.prototype.hide = function (element) {
   element.classList.add("hidden");
 };

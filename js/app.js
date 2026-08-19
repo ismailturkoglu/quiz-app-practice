@@ -1,3 +1,4 @@
+let counter;
 let randomIndex;
 let selectedQuestionList;
 let quiz;
@@ -16,17 +17,14 @@ function handleQuestionDynamically() {
     ui.createQuestion(quiz.getQuestion(), quiz.questionIndex);
     ui.displayQuestionProgress(quiz.questionIndex, quiz.questionList.length);
     ui.addAnswerListeners();
-  } else {
-    ui.disableNextQuestionBtn();
   }
 }
 function addEventListeners() {
   ui.startQuizBtn.addEventListener("click", showQuiz);
   ui.replayBtn.addEventListener("click", replayQuiz);
   ui.quitBtn.addEventListener("click", quitQuiz);
-  ui.nextQuestionBtn.addEventListener("click", handleQuestionDynamically);
+  ui.nextQuestionBtn.addEventListener("click", nextQuestion);
 }
-
 function createAnswerHandler() {
   return function (event) {
     const selectedOption = event.currentTarget;
@@ -42,17 +40,22 @@ function createAnswerHandler() {
     ui.showAnswerResult(selectedOption, isAnswerRight);
     ui.disableAnswerOptions();
     quiz.nextQuestion();
+    ui.show(ui.nextQuestionBtn);
+    clearInterval(counter);
 
     if (isQuizOver()) {
-      ui.disableNextQuestionBtn();
-      ui.show(ui.scoreDiv);
-      ui.addScoreText(quiz.correctAnswer, quiz.questionList.length);
-      ui.show(ui.scoreText);
-      ui.hide(ui.startQuizBtn);
-      ui.show(ui.replayBtn);
-      ui.show(ui.quitBtn);
+      endQuiz();
     }
   };
+}
+function endQuiz() {
+  ui.hide(ui.nextQuestionBtn);
+  ui.hide(ui.startQuizBtn);
+  ui.addScoreText(quiz.correctAnswer, quiz.questionList.length);
+  ui.show(ui.scoreDiv);
+  ui.show(ui.scoreText);
+  ui.show(ui.replayBtn);
+  ui.show(ui.quitBtn);
 }
 function isQuizOver() {
   return quiz.questionIndex >= quiz.questionList.length;
@@ -60,16 +63,17 @@ function isQuizOver() {
 function showQuiz() {
   ui.show(ui.scoreTextDiv);
   ui.show(ui.questionDiv);
+  timeLeft(10, 1000);
   ui.hide(ui.scoreDiv);
   ui.hide(ui.startQuizBtn);
+  ui.hide(ui.nextQuestionBtn);
 }
 function replayQuiz() {
   startQuizDynamically();
   showQuiz();
-  ui.enableNextQuestionBtn();
+  ui.hide(ui.nextQuestionBtn);
 }
 function quitQuiz() {
-  ui.enableNextQuestionBtn();
   ui.hide(ui.questionDiv);
   ui.hide(ui.scoreDiv);
   ui.hide(ui.replayBtn);
@@ -77,4 +81,34 @@ function quitQuiz() {
   ui.show(ui.startQuizBtn);
   ui.show(ui.nextQuestionBtn);
   startQuizDynamically();
+}
+function nextQuestion() {
+  handleQuestionDynamically();
+  ui.hide(ui.nextQuestionBtn);
+  timeLeft(10, 1000);
+}
+function timeLeft(second, interval) {
+  ui.timeSecondSpan.classList.add("text-info");
+  ui.timeSecondSpan.parentElement.classList.remove("time-up");
+  ui.timeTextSpan.textContent = "Time left:";
+  ui.timeSecondSpan.textContent = `${second}`;
+
+  counter = setInterval(() => {
+    ui.timeSecondSpan.textContent = `${second - 1}`;
+    second--;
+    if (second < 1) {
+      ui.timeSecondSpan.textContent = "0";
+      ui.timeSecondSpan.classList.remove("text-info");
+      ui.timeSecondSpan.parentElement.classList.add("time-up");
+      ui.timeTextSpan.textContent = "Time's up!";
+      clearInterval(counter);
+      ui.disableAnswerOptions();
+      quiz.questionIndex++;
+      if (isQuizOver()) {
+        endQuiz();
+      } else {
+        ui.show(ui.nextQuestionBtn);
+      }
+    }
+  }, interval);
 }

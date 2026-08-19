@@ -2,6 +2,7 @@
   --quiz-success: #77d598;
   --quiz-wrong: #f8d7da;
   --quiz-option-hover: #e9ecef;
+  --bs-warning: rgb(255, 193, 7);
 }
 
 .hidden {
@@ -22,6 +23,7 @@
   font-weight: 500;
   padding: 0.5rem 0;
   font-size: 1.2rem;
+  height: 5rem;
 }
 .question-options ul {
   padding: 0;
@@ -47,6 +49,37 @@
 }
 .question-options li.incorrect {
   background-color: var(--quiz-wrong);
+}
+.time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 30%;
+  padding: 0.4rem 1.2rem;
+  margin-bottom: 0;
+}
+.time.time-up {
+  background-color: red !important;
+  color: #fff !important;
+}
+.time-text {
+  font-size: 1rem;
+  font-weight: 400;
+}
+.time-second {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.question-progress {
+  color: var(--bs-warning) !important;
+  font-weight: 700;
+  padding: 0.4rem;
+}
+.question-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3.5rem;
 }
 
 /* score */
