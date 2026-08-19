@@ -26,7 +26,9 @@
   </head>
   <body>
     <div class="container">
-      <h4 class="my-2 py-2 text-center text-bg-primary display-5">Quiz App</h4>
+      <h4 class="my-2 py-2 text-bg-primary text-center display-6">
+        Quiz App
+      </h4>
 
       <!-- .quiz-app-container -->
       <div class="quiz-app-container py-3">
@@ -63,7 +65,7 @@
           </div>
         </div>
         <!-- #score -->
-        <id id="score" class="card my-2">
+        <div id="score" class="card my-2 hidden">
           <div class="card-body score-box text-center">
             <div class="mb-3">
               <!-- icon -->
@@ -79,12 +81,14 @@
               </div>
               <div class="score-buttons mb-3">
                 <button class="btn btn-primary hidden replay">Replay</button>
-                <button class="btn btn-primary start">Start Quiz</button>
                 <button class="btn btn-primary hidden quit">Quit</button>
               </div>
             </div>
           </div>
-        </id>
+        </div>
+        <div class="text-center">
+          <button class="btn btn-primary btn-lg start">Start Quiz</button>
+        </div>
       </div>
     </div>
     <!-- SCRIPTS -->

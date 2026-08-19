@@ -3,7 +3,7 @@ function UI() {
   this.nextQuestionBtn = document.getElementById("next-question-btn");
   this.questionProgressSpan = document.querySelector(".question-progress");
   this.replayBtn = document.querySelector(".score-buttons .replay");
-  this.startQuizBtn = document.querySelector(".score-buttons .start");
+  this.startQuizBtn = document.querySelector(".start");
   this.quitBtn = document.querySelector(".score-buttons .quit");
   this.questionDiv = document.getElementById("question");
   this.scoreDiv = document.getElementById("score");

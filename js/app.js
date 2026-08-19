@@ -71,7 +71,7 @@ function replayQuiz() {
 function quitQuiz() {
   ui.enableNextQuestionBtn();
   ui.hide(ui.questionDiv);
-  ui.hide(ui.scoreTextDiv);
+  ui.hide(ui.scoreDiv);
   ui.hide(ui.replayBtn);
   ui.hide(ui.quitBtn);
   ui.show(ui.startQuizBtn);
