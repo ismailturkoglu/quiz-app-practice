@@ -2,8 +2,7 @@ let randomIndex;
 let selectedQuestionList;
 let quiz;
 const ui = new UI();
-
-// startQuizStatically();
+addEventListeners();
 startQuizDynamically();
 
 function startQuizDynamically() {
@@ -11,40 +10,23 @@ function startQuizDynamically() {
   selectedQuestionList = questionLists[randomIndex];
   quiz = new Quiz(selectedQuestionList);
   handleQuestionDynamically();
-  ui.getQuestionBtn.addEventListener("click", handleQuestionDynamically);
-}
-function startQuizStatically() {
-  handleQuestionStatically();
-  ui.getQuestionBtn.addEventListener("click", handleQuestionStatically);
-}
-function handleQuestionStatically() {
-  if (!isQuizOver()) {
-    ui.displayQuestion(quiz.getQuestion(), quiz.questionIndex);
-    ui.displayQuestionProgress(quiz.questionIndex, quiz.questionList.length);
-    logQuestion();
-    ui.addAnswerListeners();
-  } else {
-    ui.disableQuestionBtn();
-    console.log("Quiz is over.");
-    console.log(quiz);
-  }
 }
 function handleQuestionDynamically() {
   if (!isQuizOver()) {
-    ui.startQuizBtn.addEventListener("click", startQuiz);
-    ui.replayBtn.addEventListener("click", replayQuiz);
-    ui.quitBtn.addEventListener("click", quitQuiz);
-
     ui.createQuestion(quiz.getQuestion(), quiz.questionIndex);
     ui.displayQuestionProgress(quiz.questionIndex, quiz.questionList.length);
-    logQuestion();
     ui.addAnswerListeners();
   } else {
-    ui.disableQuestionBtn();
-    console.log("Quiz is over.");
-    console.log(quiz);
+    ui.disableNextQuestionBtn();
   }
 }
+function addEventListeners() {
+  ui.startQuizBtn.addEventListener("click", showQuiz);
+  ui.replayBtn.addEventListener("click", replayQuiz);
+  ui.quitBtn.addEventListener("click", quitQuiz);
+  ui.nextQuestionBtn.addEventListener("click", handleQuestionDynamically);
+}
+
 function createAnswerHandler() {
   return function (event) {
     const selectedOption = event.currentTarget;
@@ -62,7 +44,7 @@ function createAnswerHandler() {
     quiz.nextQuestion();
 
     if (isQuizOver()) {
-      ui.disableQuestionBtn();
+      ui.disableNextQuestionBtn();
       ui.showScoreDiv();
       ui.addScoreText(quiz.correctAnswer, quiz.questionList.length);
       ui.showScoreText();
@@ -75,21 +57,15 @@ function createAnswerHandler() {
 function isQuizOver() {
   return quiz.questionIndex >= quiz.questionList.length;
 }
-function logQuestion() {
-  console.log(quiz.getQuestion());
-}
-function startQuiz() {
+function showQuiz() {
   ui.showQuestionDiv();
   ui.hideScoreDiv();
   ui.hideStartQuizBtn();
 }
 function replayQuiz() {
-  quiz.questionIndex = 0;
-  quiz.correctAnswer = 0;
   startQuizDynamically();
-  ui.hideScoreDiv();
-  ui.showQuestionDiv();
-  ui.enableQuestionBtn();
+  showQuiz();
+  ui.enableNextQuestionBtn();
 }
 function quitQuiz() {
   ui.hideQuestionDiv();

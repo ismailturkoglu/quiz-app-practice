@@ -1,6 +1,6 @@
 function UI() {
   this.questionBodyDiv = document.querySelector(".question-body");
-  this.getQuestionBtn = document.getElementById("get-question-btn");
+  this.nextQuestionBtn = document.getElementById("next-question-btn");
   this.questionProgressSpan = document.querySelector(".question-progress");
   this.replayBtn = document.querySelector(".score-buttons .replay");
   this.startQuizBtn = document.querySelector(".score-buttons .start");
@@ -9,12 +9,6 @@ function UI() {
   this.scoreDiv = document.getElementById("score");
   this.scoreTextDiv = document.querySelector(".score-text");
   this.scoreText = document.querySelector(".score-text h5");
-
-  /* 
-  // Required for startQuizStatically() in app.js
-  this.questionDiv = document.querySelector(".question-text");
-  this.optionsUl = document.querySelector(".question-options ul"); 
-  */
 }
 
 UI.prototype.createQuestion = function (question, questionIndex) {
@@ -71,34 +65,6 @@ UI.prototype.createQuestion = function (question, questionIndex) {
   bodyDiv.appendChild(questionOptionsDiv);
   this.questionBodyDiv.appendChild(bodyDiv);
 };
-
-UI.prototype.displayQuestion = function (question, questionIndex) {
-  /* <!-- This HTML Structure has to be in the index.html -->
-    <div class="body">
-      <div class="question-text"></div>
-      <div class="question-options">
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </div>
-    </div> */
-  const options = question.options;
-  const optionsKeys = Object.keys(options);
-  const optionsValues = Object.values(options);
-
-  // div
-  this.questionDiv.textContent = `${questionIndex + 1})  ${question.questionText}`;
-
-  // ul
-  this.optionsUl.children[0].textContent = `${optionsKeys[0]}) ${optionsValues[0]}`;
-  this.optionsUl.children[1].textContent = `${optionsKeys[1]}) ${optionsValues[1]}`;
-  this.optionsUl.children[2].textContent = `${optionsKeys[2]}) ${optionsValues[2]}`;
-  this.optionsUl.children[3].textContent = `${optionsKeys[3]}) ${optionsValues[3]}`;
-};
-
 UI.prototype.addAnswerListeners = function () {
   const answerHandler = createAnswerHandler();
 
@@ -106,13 +72,6 @@ UI.prototype.addAnswerListeners = function () {
     this.questionOptionsUl.children[i].addEventListener("click", answerHandler);
   }
 };
-
-UI.prototype.disableAnswerOptions = function () {
-  for (let i = 0; i < this.questionOptionsUl.children.length; i++) {
-    this.questionOptionsUl.children[i].classList.add("disabled");
-  }
-};
-
 UI.prototype.showAnswerResult = function (selectedOption, isAnswerRight) {
   if (isAnswerRight) {
     selectedOption.classList.add("correct");
@@ -130,56 +89,55 @@ UI.prototype.showAnswerResult = function (selectedOption, isAnswerRight) {
     selectedOption.insertAdjacentElement("beforeend", incorrectIcon);
   }
 };
-
-// Edit property name
-UI.prototype.disableQuestionBtn = function () {
-  this.getQuestionBtn.disabled = true;
+UI.prototype.disableNextQuestionBtn = function () {
+  this.nextQuestionBtn.disabled = true;
 };
-// Edit property name
-UI.prototype.enableQuestionBtn = function () {
-  this.getQuestionBtn.disabled = false;
+UI.prototype.enableNextQuestionBtn = function () {
+  this.nextQuestionBtn.disabled = false;
 };
-
 UI.prototype.displayQuestionProgress = function (questionIndex, questionCount) {
   this.questionProgressSpan.textContent = `${questionIndex + 1} / ${questionCount}`;
 };
-
+UI.prototype.disableAnswerOptions = function () {
+  for (let i = 0; i < this.questionOptionsUl.children.length; i++) {
+    this.questionOptionsUl.children[i].classList.add("disabled");
+  }
+};
 UI.prototype.showScoreDiv = function () {
   this.scoreDiv.classList.remove("passive");
 };
 UI.prototype.hideScoreDiv = function () {
-  ui.scoreDiv.classList.add("passive");
+  this.scoreDiv.classList.add("passive");
 };
 UI.prototype.showQuestionDiv = function () {
-  ui.questionDiv.classList.add("active");
+  this.questionDiv.classList.add("active");
 };
 UI.prototype.hideQuestionDiv = function () {
-  ui.questionDiv.classList.remove("active");
+  this.questionDiv.classList.remove("active");
 };
-
 UI.prototype.showReplayBtn = function () {
   this.replayBtn.classList.remove("passive");
   this.replayBtn.classList.add("active");
 };
 UI.prototype.hideReplayBtn = function () {
-  ui.replayBtn.classList.add("passive");
-  ui.replayBtn.classList.remove("active");
+  this.replayBtn.classList.add("passive");
+  this.replayBtn.classList.remove("active");
 };
 UI.prototype.showQuitBtn = function () {
-  ui.quitBtn.classList.add("active");
-  ui.quitBtn.classList.remove("passive");
+  this.quitBtn.classList.add("active");
+  this.quitBtn.classList.remove("passive");
 };
 UI.prototype.hideQuitBtn = function () {
-  ui.quitBtn.classList.remove("active");
-  ui.quitBtn.classList.add("passive");
+  this.quitBtn.classList.remove("active");
+  this.quitBtn.classList.add("passive");
 };
 UI.prototype.showStartQuizBtn = function () {
-  ui.startQuizBtn.classList.add("active");
-  ui.startQuizBtn.classList.remove("passive");
+  this.startQuizBtn.classList.add("active");
+  this.startQuizBtn.classList.remove("passive");
 };
 UI.prototype.hideStartQuizBtn = function () {
-  ui.startQuizBtn.classList.remove("active");
-  ui.startQuizBtn.classList.add("passive");
+  this.startQuizBtn.classList.remove("active");
+  this.startQuizBtn.classList.add("passive");
 };
 UI.prototype.showScoreText = function () {
   this.scoreTextDiv.classList.remove("passive");
