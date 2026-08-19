@@ -103,7 +103,7 @@ function timeLeft(second, interval) {
       ui.timeTextSpan.textContent = "Time's up!";
       clearInterval(counter);
       ui.disableAnswerOptions();
-      quiz.questionIndex++;
+      quiz.nextQuestion();
       if (isQuizOver()) {
         endQuiz();
       } else {
