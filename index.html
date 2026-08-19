@@ -31,7 +31,7 @@
       <!-- .quiz-app-container -->
       <div class="quiz-app-container py-3">
         <!-- #question -->
-        <div id="question" class="card my-2">
+        <div id="question" class="card my-2 hidden">
           <div class="card-header question-header">
             <h4>Quiz App</h4>
           </div>
@@ -70,7 +70,7 @@
               <i class="bi bi-trophy icon text-primary"></i>
             </div>
             <div>
-              <div class="score-text mb-3 passive">
+              <div class="score-text mb-3">
                 <p class="lead">
                   <h5>
                     <!-- dynamic -->
@@ -78,9 +78,9 @@
                 </p>
               </div>
               <div class="score-buttons mb-3">
-                <button class="btn btn-primary passive replay">Replay</button>
-                <button class="btn btn-primary start active">Start Quiz</button>
-                <button class="btn btn-primary passive quit">Quit</button>
+                <button class="btn btn-primary hidden replay">Replay</button>
+                <button class="btn btn-primary start">Start Quiz</button>
+                <button class="btn btn-primary hidden quit">Quit</button>
               </div>
             </div>
           </div>

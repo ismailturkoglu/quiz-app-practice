@@ -103,50 +103,13 @@ UI.prototype.disableAnswerOptions = function () {
     this.questionOptionsUl.children[i].classList.add("disabled");
   }
 };
-UI.prototype.showScoreDiv = function () {
-  this.scoreDiv.classList.remove("passive");
-};
-UI.prototype.hideScoreDiv = function () {
-  this.scoreDiv.classList.add("passive");
-};
-UI.prototype.showQuestionDiv = function () {
-  this.questionDiv.classList.add("active");
-};
-UI.prototype.hideQuestionDiv = function () {
-  this.questionDiv.classList.remove("active");
-};
-UI.prototype.showReplayBtn = function () {
-  this.replayBtn.classList.remove("passive");
-  this.replayBtn.classList.add("active");
-};
-UI.prototype.hideReplayBtn = function () {
-  this.replayBtn.classList.add("passive");
-  this.replayBtn.classList.remove("active");
-};
-UI.prototype.showQuitBtn = function () {
-  this.quitBtn.classList.add("active");
-  this.quitBtn.classList.remove("passive");
-};
-UI.prototype.hideQuitBtn = function () {
-  this.quitBtn.classList.remove("active");
-  this.quitBtn.classList.add("passive");
-};
-UI.prototype.showStartQuizBtn = function () {
-  this.startQuizBtn.classList.add("active");
-  this.startQuizBtn.classList.remove("passive");
-};
-UI.prototype.hideStartQuizBtn = function () {
-  this.startQuizBtn.classList.remove("active");
-  this.startQuizBtn.classList.add("passive");
-};
-UI.prototype.showScoreText = function () {
-  this.scoreTextDiv.classList.remove("passive");
-  this.scoreTextDiv.classList.add("active");
-};
-UI.prototype.hideScoreText = function () {
-  this.scoreTextDiv.classList.remove("active");
-  this.scoreTextDiv.classList.add("passive");
-};
 UI.prototype.addScoreText = function (correctAnswer, totalAnswer) {
   this.scoreText.textContent = `Toplam ${totalAnswer} sorudan ${correctAnswer} doğru cevap verdiniz.`;
+};
+
+UI.prototype.hide = function (element) {
+  element.classList.add("hidden");
+};
+UI.prototype.show = function (element) {
+  element.classList.remove("hidden");
 };

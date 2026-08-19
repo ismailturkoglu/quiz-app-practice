@@ -45,12 +45,12 @@ function createAnswerHandler() {
 
     if (isQuizOver()) {
       ui.disableNextQuestionBtn();
-      ui.showScoreDiv();
+      ui.show(ui.scoreDiv);
       ui.addScoreText(quiz.correctAnswer, quiz.questionList.length);
-      ui.showScoreText();
-      ui.hideStartQuizBtn();
-      ui.showReplayBtn();
-      ui.showQuitBtn();
+      ui.show(ui.scoreText);
+      ui.hide(ui.startQuizBtn);
+      ui.show(ui.replayBtn);
+      ui.show(ui.quitBtn);
     }
   };
 }
@@ -58,9 +58,10 @@ function isQuizOver() {
   return quiz.questionIndex >= quiz.questionList.length;
 }
 function showQuiz() {
-  ui.showQuestionDiv();
-  ui.hideScoreDiv();
-  ui.hideStartQuizBtn();
+  ui.show(ui.scoreTextDiv);
+  ui.show(ui.questionDiv);
+  ui.hide(ui.scoreDiv);
+  ui.hide(ui.startQuizBtn);
 }
 function replayQuiz() {
   startQuizDynamically();
@@ -68,6 +69,12 @@ function replayQuiz() {
   ui.enableNextQuestionBtn();
 }
 function quitQuiz() {
-  ui.hideQuestionDiv();
-  ui.hideScoreText();
+  ui.enableNextQuestionBtn();
+  ui.hide(ui.questionDiv);
+  ui.hide(ui.scoreTextDiv);
+  ui.hide(ui.replayBtn);
+  ui.hide(ui.quitBtn);
+  ui.show(ui.startQuizBtn);
+  ui.show(ui.nextQuestionBtn);
+  startQuizDynamically();
 }
