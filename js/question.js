@@ -1,3 +1,4 @@
+"use strict";
 function Question(questionText, options, result) {
   this.questionText = questionText;
   this.options = options;

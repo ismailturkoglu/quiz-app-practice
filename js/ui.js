@@ -1,4 +1,8 @@
+"use strict";
 function UI() {
+  this.progressAnimationDiv = document.querySelector(".progress-animation");
+  this.timeSecondSpan = document.querySelector(".time-second");
+  this.timeTextSpan = document.querySelector(".time-text");
   this.questionBodyDiv = document.querySelector(".question-body");
   this.nextQuestionBtn = document.getElementById("next-question-btn");
   this.questionProgressSpan = document.querySelector(".question-progress");
@@ -9,8 +13,6 @@ function UI() {
   this.scoreDiv = document.getElementById("score");
   this.scoreTextDiv = document.querySelector(".score-text");
   this.scoreText = document.querySelector(".score-text h5");
-  this.timeSecondSpan = document.querySelector(".time-second");
-  this.timeTextSpan = document.querySelector(".time-text");
 }
 
 UI.prototype.createQuestion = function (question, questionIndex) {

@@ -19,6 +19,9 @@
 }
 
 /* question */
+.question-header {
+  position: relative;
+}
 .question-text {
   font-weight: 500;
   padding: 0.5rem 0;
@@ -69,6 +72,13 @@
 .time-second {
   font-size: 1.3rem;
   font-weight: 600;
+}
+.progress-animation {
+  background-color: var(--bs-warning);
+  height: 5px;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
 }
 .question-progress {
   color: var(--bs-warning) !important;

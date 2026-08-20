@@ -1,3 +1,4 @@
+"use strict";
 function Quiz(questionList) {
   this.questionIndex = 0;
   this.questionList = questionList;

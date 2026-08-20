@@ -1,4 +1,6 @@
-let counter;
+"use strict";
+let counterSecond;
+let counterAnimation;
 let randomIndex;
 let selectedQuestionList;
 let quiz;
@@ -41,7 +43,7 @@ function createAnswerHandler() {
     ui.disableAnswerOptions();
     quiz.nextQuestion();
     ui.show(ui.nextQuestionBtn);
-    clearInterval(counter);
+    endTimeLeft();
 
     if (isQuizOver()) {
       endQuiz();
@@ -63,10 +65,19 @@ function isQuizOver() {
 function showQuiz() {
   ui.show(ui.scoreTextDiv);
   ui.show(ui.questionDiv);
-  timeLeft(10, 1000);
+  startTimeLeft();
   ui.hide(ui.scoreDiv);
   ui.hide(ui.startQuizBtn);
   ui.hide(ui.nextQuestionBtn);
+}
+function startTimeLeft() {
+  let second = 10;
+  timeLeftSecond(second, 1000);
+  timeLeftAnimation(second);
+}
+function endTimeLeft() {
+  clearInterval(counterSecond);
+  clearInterval(counterAnimation);
 }
 function replayQuiz() {
   startQuizDynamically();
@@ -85,15 +96,15 @@ function quitQuiz() {
 function nextQuestion() {
   handleQuestionDynamically();
   ui.hide(ui.nextQuestionBtn);
-  timeLeft(10, 1000);
+  startTimeLeft();
 }
-function timeLeft(second, interval) {
+function timeLeftSecond(second, interval) {
   ui.timeSecondSpan.classList.add("text-info");
   ui.timeSecondSpan.parentElement.classList.remove("time-up");
   ui.timeTextSpan.textContent = "Time left:";
   ui.timeSecondSpan.textContent = `${second}`;
 
-  counter = setInterval(() => {
+  counterSecond = setInterval(() => {
     ui.timeSecondSpan.textContent = `${second - 1}`;
     second--;
     if (second < 1) {
@@ -101,7 +112,7 @@ function timeLeft(second, interval) {
       ui.timeSecondSpan.classList.remove("text-info");
       ui.timeSecondSpan.parentElement.classList.add("time-up");
       ui.timeTextSpan.textContent = "Time's up!";
-      clearInterval(counter);
+      clearInterval(counterSecond);
       ui.disableAnswerOptions();
       quiz.nextQuestion();
       if (isQuizOver()) {
@@ -109,6 +120,16 @@ function timeLeft(second, interval) {
       } else {
         ui.show(ui.nextQuestionBtn);
       }
+    }
+  }, interval);
+}
+function timeLeftAnimation(interval) {
+  let x = 1000;
+  counterAnimation = setInterval(() => {
+    ui.progressAnimationDiv.style.width = x / 10 + "%";
+    x--;
+    if (x < 0) {
+      clearInterval(counterAnimation);
     }
   }, interval);
 }

@@ -1,3 +1,4 @@
+"use strict";
 const question_1 = new Question(
   "JavaScript hangi tür bir dildir?",
   {

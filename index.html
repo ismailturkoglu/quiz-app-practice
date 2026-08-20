@@ -34,12 +34,15 @@
       <div class="quiz-app-container py-3">
         <!-- #question -->
         <div id="question" class="card my-2 hidden">
-          <div class="card-header question-header d-flex justify-content-between align-items-center">
-            <h4>Quiz</h4>
+          <div class="card-header question-header">
+            <div class="d-flex justify-content-between align-items-center">
+              <h4>Quiz</h4>
             <h6 class="time badge text-bg-warning">
               <span class="time-text"></span>
               <span class="time-second text-info"></span>
             </h6>
+            </div>
+            <div class="progress-animation"></div>
           </div>
           <div class="card-body question-body">
             <!-- static part for startQuizStaticly() on app.js -->
@@ -62,7 +65,7 @@
               <!-- dynamic -->
             </span>
             <div>
-              <button class="btn btn-warning hidden" id="next-question-btn">
+              <button class="btn btn-primary text-warning hidden" id="next-question-btn">
                 <i class="bi bi-arrow-right"></i>
               </button>
             </div>
