@@ -12,7 +12,3 @@ Quiz.prototype.getQuestion = function () {
 Quiz.prototype.nextQuestion = function () {
   this.questionIndex++;
 };
-
-Quiz.prototype.getCorrectNumber = function () {
-  return this.correctAnswer;
-};

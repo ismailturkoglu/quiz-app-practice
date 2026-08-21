@@ -137,6 +137,7 @@ const questionList_3 = [
   ),
 ];
 
+// Alternative approach for practice: question objects are created directly (with object literal) without the question constructor.
 const questionList_4 = [
   {
     questionText:

@@ -76,7 +76,6 @@
 .progress-animation {
   background-color: var(--bs-warning);
   height: 5px;
-  width: 100%;
   position: absolute;
   left: 0;
   bottom: -6px;

@@ -105,6 +105,7 @@ function timeLeftSecond(second) {
   const totalTime = second * 1000;
   // Get start time
   const startTime = Date.now();
+  ui.progressAnimationDiv.style.width = "100%";
 
   // Timer function: Update screen for every 50 ms
   counterSecond = setInterval(() => {
@@ -120,7 +121,6 @@ function timeLeftSecond(second) {
 
     // Get animation percentage
     const percentage = (remain / totalTime) * 100;
-    console.log(percentage);
 
     // Update time animation
     ui.progressAnimationDiv.style.width = percentage + "%";
