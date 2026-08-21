@@ -71,13 +71,10 @@ function showQuiz() {
   ui.hide(ui.nextQuestionBtn);
 }
 function startTimeLeft() {
-  let second = 10;
-  timeLeftSecond(second, 1000);
-  timeLeftAnimation(second);
+  timeLeftSecond(10);
 }
 function endTimeLeft() {
   clearInterval(counterSecond);
-  clearInterval(counterAnimation);
 }
 function replayQuiz() {
   startQuizDynamically();
@@ -98,21 +95,43 @@ function nextQuestion() {
   ui.hide(ui.nextQuestionBtn);
   startTimeLeft();
 }
-function timeLeftSecond(second, interval) {
+function timeLeftSecond(second) {
   ui.timeSecondSpan.classList.add("text-info");
   ui.timeSecondSpan.parentElement.classList.remove("time-up");
   ui.timeTextSpan.textContent = "Time left:";
   ui.timeSecondSpan.textContent = `${second}`;
 
+  // Determine time
+  const totalTime = second * 1000;
+  // Get start time
+  const startTime = Date.now();
+
+  // Timer function: Update screen for every 50 ms
   counterSecond = setInterval(() => {
-    ui.timeSecondSpan.textContent = `${second - 1}`;
-    second--;
-    if (second < 1) {
-      ui.timeSecondSpan.textContent = "0";
+    // Time passed
+    const timePassed = Date.now() - startTime;
+    // Remaining time
+    const remain = Math.max(totalTime - timePassed, 0);
+    // Remaining time in seconds
+    const remainSecond = Math.ceil(remain / 1000);
+
+    // Update time second
+    ui.timeSecondSpan.textContent = remainSecond;
+
+    // Get animation percentage
+    const percentage = (remain / totalTime) * 100;
+    console.log(percentage);
+
+    // Update time animation
+    ui.progressAnimationDiv.style.width = percentage + "%";
+
+    if (remain <= 0) {
+      clearInterval(counterSecond);
+
       ui.timeSecondSpan.classList.remove("text-info");
       ui.timeSecondSpan.parentElement.classList.add("time-up");
       ui.timeTextSpan.textContent = "Time's up!";
-      clearInterval(counterSecond);
+      ui.timeSecondSpan.textContent = 0;
       ui.disableAnswerOptions();
       quiz.nextQuestion();
       if (isQuizOver()) {
@@ -121,15 +140,5 @@ function timeLeftSecond(second, interval) {
         ui.show(ui.nextQuestionBtn);
       }
     }
-  }, interval);
-}
-function timeLeftAnimation(interval) {
-  let x = 1000;
-  counterAnimation = setInterval(() => {
-    ui.progressAnimationDiv.style.width = x / 10 + "%";
-    x--;
-    if (x < 0) {
-      clearInterval(counterAnimation);
-    }
-  }, interval);
+  }, 30);
 }

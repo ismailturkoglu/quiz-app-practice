@@ -93,7 +93,6 @@ UI.prototype.showAnswerResult = function (selectedOption, isAnswerRight) {
     selectedOption.insertAdjacentElement("beforeend", incorrectIcon);
   }
 };
-
 UI.prototype.displayQuestionProgress = function (questionIndex, questionCount) {
   this.questionProgressSpan.textContent = `${questionIndex + 1} / ${questionCount}`;
 };
