@@ -6,7 +6,7 @@ This project was developed as a JavaScript practice project to improve DOM manip
 
 ## Live Demo
 
-(https://ismailturkoglu.github.io/quiz-app-practice/)
+https://ismailturkoglu.github.io/quiz-app-practice/
 
 ## Features
 
